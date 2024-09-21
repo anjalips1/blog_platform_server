@@ -61,7 +61,7 @@ describe("blog creation", () => {
       isEmpty: () => false,
       errors: [
         {
-          msg: { message: "Tite is required" },
+          msg: { message: "Title is required" },
         },
       ],
     });
@@ -75,11 +75,8 @@ describe("blog creation", () => {
       },
     };
 
-    const response = await createBlog(req, res);
-    expect(response).toEqual({
-      code: 400,
-      message: { message: "Tite is required" },
-    });
+    const response = await createBlog(req, res);    
+    expect(response).toEqual({ code: 400, message: { message: 'Title is required' } });
   });
 });
 
@@ -90,7 +87,7 @@ describe("get all blogs", () => {
   };
 
   //get all blogs ---- success
-  test("get all blogs with pagination", async () => {
+  test("get all blogs with pagination - success", async () => {
     validationResult.mockReturnValueOnce({
       isEmpty: () => true,
     });
@@ -274,32 +271,6 @@ describe("update blog by its id", () => {
     send: jest.fn(),
   };
 
-  // test("validation error (tite/content is empty)", async () => {
-  //     validationResult.mockReturnValueOnce({
-  //         isEmpty: () => false,
-  //         errors: [
-  //           {
-  //             msg: { message: "Tite is required" },
-  //           },
-  //         ],
-  //       });
-
-  //     //pass request with title field as empty
-  //     const req = {
-  //         body: {
-  //           title: "",
-  //           content: "content",
-  //           tags: ["node", "react"],
-  //         },
-  //       };
-
-  //     const response1 = await updateBlog(req, res);
-  //     expect(response1).toEqual({
-  //       code: 400,
-  //       message: { message: "Tite is required" },
-  //     });
-  // });
-
   test("update blog by its id - blog not found", async () => {
     validationResult.mockReturnValueOnce({
       isEmpty: () => true,
@@ -427,38 +398,6 @@ describe("delete blog by its id", () => {
     expect(response2).toEqual({ code: 400, message: "Blog not found" });
   });
 
-  // update blog by its id ---- success
-//   test("delete blog by its id - success", async () => {
-//     validationResult.mockReturnValueOnce({
-//       isEmpty: () => true,
-//     });
-
-//     const req3 = {
-//       params: { id: "66ed4c9c1785f32edbe86d29" },
-//       user: "66ed179428faae45dc435f71"
-//   };
-
-//     const blogDetail = {
-//       _id: "66ed4c9c1785f32edbe86d29",
-//       title: "title",
-//       content: "content",
-//       author: "66ed179428faae45dc435f71",
-//       tags: ["nodejs", "tech"],
-//       comments: [],
-//       createdAt: "2024-09-20T10:21:16.941Z",
-//       updatedAt: "2024-09-20T11:39:42.463Z",
-//     };
-
-//     blogModel.findById.mockReturnValueOnce(blogDetail);
-//     blogModel.findByIdAndDelete.mockResolvedValueOnce(blogDetail);
-//     commentsModel.deleteMany.mockResolvedValueOnce()
-
-//     const response3 = await deleteBlog(req3, res);
-//     console.log(response3,"responseresponseresponse");
-
-//     expect(response3).toEqual({ message : "Blog deleted successfully" });
-    
-//   });
 
   test("delete blog by its id - access denied", async () => {
     validationResult.mockReturnValueOnce({

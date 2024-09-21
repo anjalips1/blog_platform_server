@@ -25,7 +25,6 @@ function authenticateToken(req, res, next) {
         
     }
   } catch (error) {
-    console.log(error);
     return res.status(403).send({ message: "Invalid token" });
   }
 }

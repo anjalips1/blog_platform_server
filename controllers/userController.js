@@ -23,8 +23,6 @@ const userRegister = async(req,res) => {
         const user = await userModel(data).save()
         return { message : "User registered successfully", data : user }
     } catch (error) {
-  console.log("inside handle error");
-
         return handleError(error)
     }
 }

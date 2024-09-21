@@ -82,29 +82,6 @@ describe("user registration", () => {
       message: { message: "Email is required" },
     });
   });
-
-  // test("catch block - internal server error", async () => {
-  //   validationResult.mockReturnValueOnce({
-  //     isEmpty: () => true,
-  // })
-
-  // bcrypt.genSalt.mockResolvedValueOnce("random_salt");
-  // bcrypt.hash.mockResolvedValueOnce("hashed_password");
-
-  //   const req = {
-  //     body: {
-  //       name: "name",
-  //       username: "username",
-  //       password: "12345",
-  //       email : "email@gmail.com"
-  //     },
-  //   };
-
-  //   const response = await userRegister(req, res);
-  //   // expect(response).toEqual({ code: 500, message: { message: 'Internal server error' } });
-  //   expect(response.code).toHaveBeenCalledWith(500)
-
-  // });
 });
 
 describe("user login", () => {

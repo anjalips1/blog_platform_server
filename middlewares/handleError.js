@@ -1,5 +1,4 @@
 const handleError = (error) => {
-  console.log("inside handle error",error);
   
     if (error.code === 11000) {
         const field = Object.keys(error.keyValue)[0];
